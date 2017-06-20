@@ -1,11 +1,9 @@
-// Startup Express App
 var express = require('express');
 var http = require('http');
 var app = express();
 var server = http.createServer(app);
 var io = require('socket.io').listen(server);
 
-// Configure html template engine
 var path = require('path');
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -16,7 +14,7 @@ var buzzwords = ["High-Value","Cloud","Scalability","Bluemix","PaaS","Big Data",
 // socket.io listen for messages
 io.on('connection', function(socket) {
 	// send out the buzzwords to each connected client
-	socket.emit('init', buzzwords);
+	socket.emit('buzzwords', randomize(buzzwords));
 });
 
 //Fisher-Yates (Knuth) Shuffle
@@ -38,7 +36,7 @@ function randomize(array){
 
 // handle HTTP GET request to the "/" URL
 app.get('/', function(req, res) {
-	res.render('index.html');
+	res.send('index.html');
 });
 
 // The IP address of the Cloud Foundry DEA (Droplet Execution Agent) that hosts this application:
@@ -47,4 +45,4 @@ var host = (process.env.VCAP_APP_HOST || 'localhost');
 var port = (process.env.VCAP_APP_PORT || 3000);
 // Start server
 server.listen(port, host);
-console.log('App started on port ' + port);
+console.log('App started on ' + host + ":" + port);

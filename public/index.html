@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>Buzzword Bingo</title>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="//cdn.jsdelivr.net/jquery/2.1.1/jquery.min.js"></script>
-    <script src="/javascripts/client.js"></script>
-    <meta name="viewport" content="initial-scale=1.0, width=device-width,height=device-height, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/normalize/3.0.1/normalize.min.css">
-    <link rel="stylesheet" href="/stylesheets/style.css">
-  </head>
-  <body onload="setup()">
-    <h1> Welcome to Buzzword Bingo!</h1>
-    <br>
+<head>
+	<meta charset="utf-8">
+	<title>Buzzword Bingo</title>
+	<meta name="viewport" content="initial-scale=1.0, width=device-width,height=device-height, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+	<h1> Welcome to Buzzword Bingo!</h1>
 
-  <div id="container">
+	<div id="container">
 
-    <table id='bingo'></table>
+		<table id="bingoTable">
+			<tbody id="bingoBody"></tbody>
+		</table>
 
-  </div>
+	</div>
+
+	<script src="socket.io/socket.io.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script src="javascripts/client.js"></script>
 </body>
 </html>
